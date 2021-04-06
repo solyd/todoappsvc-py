@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package todoapp;
+
+// to create tasks, you don't need to fill `id` field
+message Task {
+  int64 id = 1;
+  string contents = 2;
+  bool done = 3;
+}
+
+message Create {
+  Task task = 1;
+}
+
+message CreateOk {
+  int64 id = 1;
+}
+
+message GetOk {
+  repeated Task tasks = 1;
+}
+
+message MarkDone {
+  repeated int64 ids = 1;
+}
+
+message MarkDoneOk {
+  repeated int64 ids = 1;
+}
+
+message Delete {
+  repeated int64 ids = 1;
+}
+
+message DeleteOk {
+  repeated int64 ids = 1;
+}
+
+message ApiErr {
+  int64 code = 1;
+  string desc = 2;
+}
+
+enum ApiErrCode {
+  ERR_UNKNOWN = 0;
+  ERR_DB = 1;
+}
