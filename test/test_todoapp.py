@@ -188,6 +188,12 @@ def make_todoapp_test(todoapp):
             rdata = json.loads(r.data.decode())
             self.assertEqual(len(rdata["ids"]), 0)
 
+    return TestTodoAppSvc
 
-make_todoapp_test(TodoAppSvc(9010, TinyDBStorage(tempfile.TemporaryFile().name)))
-make_todoapp_test(TodoAppSvc(9011, InMemStorage()))
+
+class TestTodoAppWithTinyDBStorage(make_todoapp_test(TodoAppSvc(9010, TinyDBStorage(tempfile.TemporaryFile().name)))):
+    pass
+
+
+class TestTodoAppWithInMemStorage(make_todoapp_test(TodoAppSvc(9011, InMemStorage()))):
+    pass
