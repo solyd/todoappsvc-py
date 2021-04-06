@@ -87,7 +87,6 @@ protoc -I=. --python_out=. api.proto
 
 
 # TODO
-- [ ] Use something "larger" for an `id` type (currently 64 bits)
 - [ ] Storage layer shouldn't raise random exceptions depending on underlying implementation.
 - [ ] Bulk Create operation
 - [ ] use enums for http status codes instead of integers
